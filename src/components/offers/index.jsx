@@ -1,6 +1,13 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
-import { Card, CardContent, Cards, Container, Title, ImgContent } from "./styles";
+import {
+  Card,
+  CardContent,
+  Cards,
+  Container,
+  Title,
+  ImgContent,
+} from "./styles";
 
 import { FaLongArrowAltRight } from "react-icons/fa";
 import { TbShoppingCartPlus } from "react-icons/tb";
@@ -14,6 +21,10 @@ import productImg6 from "../../assets/products/produto-06.png";
 
 export function Offers() {
   const [isHovered, setIsHovered] = useState(Array(6).fill(false));
+  const [products, setProducts] = useState([]);
+
+  const apiURL =
+    "https://gist.githubusercontent.com/bugan/41d60ffa23fa0c4044cc138bf670780d/raw";
 
   const productImages = [
     productImg1,
@@ -40,6 +51,19 @@ export function Offers() {
     });
   }
 
+  useEffect(() => {
+    fetch(apiURL)
+      .then((response) => response.json())
+      .then((data) => {
+        const repeatProducts = [...data];
+        while (repeatProducts.length < 6) {
+          repeatProducts.push(...data);
+        }
+        setProducts(repeatProducts.slice(0, 6));
+      })
+      .catch((error) => console.error("Error fetching data:", error));
+  }, []);
+
   return (
     <Container>
       <Title>
@@ -48,19 +72,18 @@ export function Offers() {
       </Title>
 
       <Cards>
-        {[...Array(6)].map((_, index) => (
+        {products.map((product, index) => (
           <Card key={index}>
             <ImgContent>
-
-            <img
-              src={productImages[index % productImages.length]}
-              alt={`produto ${index + 1}`}
-            />
+              <img
+                src={productImages[index % productImages.length]}
+                alt={`produto ${index + 1}`}
+              />
             </ImgContent>
 
             <CardContent>
-              <h1>Ajuga reptans</h1>
-              <span>R$ 20,00</span>
+              <h1>{product.name}</h1>
+              <span>R$ {product.preco}</span>
 
               <button
                 onMouseEnter={() => handleMouseEnter(index)}
