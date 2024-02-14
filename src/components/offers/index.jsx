@@ -9,6 +9,8 @@ import {
   ImgContent,
 } from "./styles";
 
+import { api } from "../../services/api";
+
 import { FaLongArrowAltRight } from "react-icons/fa";
 import { TbShoppingCartPlus } from "react-icons/tb";
 
@@ -22,9 +24,6 @@ import productImg6 from "../../assets/products/produto-06.png";
 export function Offers() {
   const [isHovered, setIsHovered] = useState(Array(6).fill(false));
   const [products, setProducts] = useState([]);
-
-  const apiURL =
-    "https://gist.githubusercontent.com/bugan/41d60ffa23fa0c4044cc138bf670780d/raw";
 
   const productImages = [
     productImg1,
@@ -52,7 +51,7 @@ export function Offers() {
   }
 
   useEffect(() => {
-    fetch(apiURL)
+    fetch(api)
       .then((response) => response.json())
       .then((data) => {
         const repeatProducts = [...data];
