@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
+  width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -60,7 +61,7 @@ export const Card = styled.div`
 `;
 
 export const ImgContent = styled.div`
-  width: 170px;
+  max-width: 170px;
   overflow: hidden;
 
   margin-right: 10px;
@@ -132,5 +133,67 @@ export const CardContent = styled.div`
     &:hover {
       font-weight: bold;
     }
+  }
+`;
+
+export const Options = styled.div`
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+
+  position: relative;
+  left: -440px;
+
+  margin-top: 20px;
+  margin-bottom: 30px;
+`;
+
+export const SelectStyle = styled.select`
+  margin-bottom: 20px;
+  padding: 10px;
+
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+  background-color: #fff;
+  cursor: pointer;
+  outline: none;
+  transition: border-color 0.3s ease;
+
+  &:focus {
+    border-color: #007bff;
+  }
+
+  &::-ms-expand {
+    display: none;
+    color: red;
+  }
+`;
+
+export const DivInputChecked = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  > span {
+    opacity: 50%;
+  }
+`;
+
+export const InputCheck = styled.input`
+  display: inline-block;
+  width: 17px;
+  height: 17px;
+  background: #fff;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  transition: all 0.3s;
+
+  margin-left: 10px;
+
+  cursor: pointer;
+
+  &:hover {
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
   }
 `;

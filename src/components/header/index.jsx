@@ -23,7 +23,7 @@ export function Header() {
           </ListItem>
           <ListItem>
             <a href="/" onClick={handleSrollToOffers}>
-              Ofertas
+              Nossas plantas
             </a>
           </ListItem>
           <ListItem>
