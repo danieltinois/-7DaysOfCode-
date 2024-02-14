@@ -80,9 +80,10 @@ export function Offers() {
     : products;
 
   useEffect(() => {
-    fetch(api)
-      .then((response) => response.json())
-      .then((data) => {
+    api
+      .get("")
+      .then((response) => {
+        const data = response.data;
         const repeatProducts = [...data];
         while (repeatProducts.length < 12) {
           repeatProducts.push(...data);
@@ -117,7 +118,7 @@ export function Offers() {
 
       <Cards>
         {filteredProducts.map((product, index) => (
-          <Card key={index} blur={product.ordem === 0}>
+          <Card key={index} blur={product.ordem === 0 ? "true" : "false"}>
             <ImgContent>
               <img
                 src={productImages[index % productImages.length]}
