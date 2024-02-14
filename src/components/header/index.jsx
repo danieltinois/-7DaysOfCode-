@@ -3,6 +3,13 @@ import { Container, ContentUl, ListItem } from "./styles";
 import logo from "../../assets/svg/logo.svg";
 
 export function Header() {
+  function handleSrollToOffers(e) {
+    e.preventDefault();
+
+    const offersSection = document.getElementById("offers");
+    offersSection.scrollIntoView({ behavior: "smooth" });
+  }
+
   return (
     <Container>
       <div>
@@ -15,7 +22,9 @@ export function Header() {
             <a href="/">Como fazer</a>
           </ListItem>
           <ListItem>
-            <a href="/">Ofertas</a>
+            <a href="/" onClick={handleSrollToOffers}>
+              Ofertas
+            </a>
           </ListItem>
           <ListItem>
             <a href="/">Depoimentos</a>

@@ -48,6 +48,10 @@ export const Card = styled.div`
 
   background: ${({ theme }) => theme.COLORS.WHITE};
 
+  filter: ${({ blur }) => (blur ? "blur(0px)" : "none")};
+
+  user-select: ${({ blur }) => (blur ? "none" : "select")};
+
   transition: transform ease 0.2s;
 
   &:hover {
@@ -71,6 +75,22 @@ export const CardContent = styled.div`
   flex-direction: column;
 
   padding: 27px 0px;
+
+  .out-of-stock {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 18px;
+    font-weight: bold;
+    color: red;
+    z-index: 1;
+
+    filter: ${({ blur }) => (blur ? "blur(0)" : "none")};
+  }
 
   > h1 {
     font-family: "Elsie Swash Caps", serif;

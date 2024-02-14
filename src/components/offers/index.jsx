@@ -22,7 +22,7 @@ import productImg5 from "../../assets/products/produto-05.png";
 import productImg6 from "../../assets/products/produto-06.png";
 
 export function Offers() {
-  const [isHovered, setIsHovered] = useState(Array(6).fill(false));
+  const [isHovered, setIsHovered] = useState(Array(12).fill(false));
   const [products, setProducts] = useState([]);
 
   const productImages = [
@@ -55,16 +55,16 @@ export function Offers() {
       .then((response) => response.json())
       .then((data) => {
         const repeatProducts = [...data];
-        while (repeatProducts.length < 6) {
+        while (repeatProducts.length < 12) {
           repeatProducts.push(...data);
         }
-        setProducts(repeatProducts.slice(0, 6));
+        setProducts(repeatProducts.slice(0, 12));
       })
       .catch((error) => console.error("Error fetching data:", error));
   }, []);
 
   return (
-    <Container>
+    <Container id="offers">
       <Title>
         <span>Conheça nossas</span>
         <h1>ofertas</h1>
@@ -72,7 +72,7 @@ export function Offers() {
 
       <Cards>
         {products.map((product, index) => (
-          <Card key={index}>
+          <Card key={index} blur={product.ordem === 0}>
             <ImgContent>
               <img
                 src={productImages[index % productImages.length]}
@@ -84,17 +84,22 @@ export function Offers() {
               <h1>{product.name}</h1>
               <span>R$ {product.preco}</span>
 
-              <button
-                onMouseEnter={() => handleMouseEnter(index)}
-                onMouseLeave={() => handleMouseLeave(index)}
-              >
-                Comprar
-                {isHovered[index] ? (
-                  <TbShoppingCartPlus />
-                ) : (
-                  <FaLongArrowAltRight />
-                )}
-              </button>
+              {product.ordem === 0 ? (
+                <span className="out-of-stock">Fora de estoque</span>
+              ) : (
+                <button
+                  onMouseEnter={() => handleMouseEnter(index)}
+                  onMouseLeave={() => handleMouseLeave(index)}
+                  disabled={product.ordem === 0}
+                >
+                  Comprar
+                  {isHovered[index] ? (
+                    <TbShoppingCartPlus />
+                  ) : (
+                    <FaLongArrowAltRight />
+                  )}
+                </button>
+              )}
             </CardContent>
           </Card>
         ))}
