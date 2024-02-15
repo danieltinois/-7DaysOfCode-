@@ -1,4 +1,8 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
+
+import { CartContext } from "../../context/cart";
+
+import { toast } from "react-toastify";
 
 import {
   Card,
@@ -31,6 +35,8 @@ export function Offers() {
   const [sortOrder, setSortOrder] = useState("asc");
   const [removeOutOfStock, setRemoveOutOfStock] = useState(false);
 
+  const { addProductToCart } = useContext(CartContext);
+
   const productImages = [
     productImg1,
     productImg2,
@@ -39,6 +45,18 @@ export function Offers() {
     productImg5,
     productImg6,
   ];
+
+  const notifySuccess = () =>
+    toast.success("Produto adicionado no carrinho com sucesso!", {
+      position: "top-right",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+    });
 
   function handleMouseEnter(index) {
     setIsHovered((prevState) => {
@@ -71,6 +89,15 @@ export function Offers() {
     setProducts(sortedProducts);
   }
 
+  function handleAddToCart(product, index) {
+    addProductToCart(product);
+    const updatedProduct = { ...product, img: product.img }; // Inclui a propriedade img ao produto
+    const updatedProducts = [...products];
+    updatedProducts[index] = updatedProduct;
+    setProducts(updatedProducts);
+    notifySuccess();
+  }
+
   function handleCheckboxChange(event) {
     setRemoveOutOfStock(event.target.checked);
   }
@@ -83,7 +110,10 @@ export function Offers() {
     api
       .get("")
       .then((response) => {
-        const data = response.data;
+        const data = response.data.map((prod) => ({
+          ...prod,
+          img: productImages[Math.floor(Math.random() * productImages.length)], // Atribui uma imagem aleatória ao produto
+        }));
         const repeatProducts = [...data];
         while (repeatProducts.length < 12) {
           repeatProducts.push(...data);
@@ -120,10 +150,8 @@ export function Offers() {
         {filteredProducts.map((product, index) => (
           <Card key={index} blur={product.ordem === 0 ? "true" : "false"}>
             <ImgContent>
-              <img
-                src={productImages[index % productImages.length]}
-                alt={`produto ${index + 1}`}
-              />
+              <img src={product.img} alt={`produto ${index + 1}`} />{" "}
+              {/* Utiliza a imagem do produto */}
             </ImgContent>
 
             <CardContent>
@@ -136,6 +164,7 @@ export function Offers() {
                 <button
                   onMouseEnter={() => handleMouseEnter(index)}
                   onMouseLeave={() => handleMouseLeave(index)}
+                  onClick={() => handleAddToCart(product, index)}
                   disabled={product.ordem === 0}
                 >
                   Comprar

@@ -30,6 +30,8 @@ export default createGlobalStyle`
         background-repeat: no-repeat;
         background-position: right top;
         background-size: 100% 100%;
+        width: 100%;
+        height: 100%;
 
     }
   }

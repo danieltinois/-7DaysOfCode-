@@ -33,7 +33,7 @@ export function Header() {
             <a href="/">Vídeos</a>
           </ListItem>
           <ListItem>
-            <a href="/">Meu carrinho</a>
+            <a href="/cart">Meu carrinho</a>
           </ListItem>
         </ContentUl>
       </nav>
