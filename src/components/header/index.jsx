@@ -1,6 +1,9 @@
+import { useNavigate } from "react-router";
+
 import { Container, ContentUl, ListItem } from "./styles";
 
 import logo from "../../assets/svg/logo.svg";
+import { Link } from "react-router-dom";
 
 export function Header() {
   function handleSrollToOffers(e) {
@@ -22,9 +25,7 @@ export function Header() {
             <a href="/">Como fazer</a>
           </ListItem>
           <ListItem>
-            <a href="/" onClick={handleSrollToOffers}>
-              Nossas plantas
-            </a>
+            <Link to="/cart"></Link>
           </ListItem>
           <ListItem>
             <a href="/">Depoimentos</a>
