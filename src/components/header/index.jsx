@@ -25,7 +25,9 @@ export function Header() {
             <a href="/">Como fazer</a>
           </ListItem>
           <ListItem>
-            <Link to="/cart"></Link>
+            <a href="/" onClick={handleSrollToOffers}>
+              Nossas plantas
+            </a>
           </ListItem>
           <ListItem>
             <a href="/">Depoimentos</a>
@@ -34,7 +36,7 @@ export function Header() {
             <a href="/">Vídeos</a>
           </ListItem>
           <ListItem>
-            <a href="/cart">Meu carrinho</a>
+            <Link to="/cart">Meu carrinho</Link>
           </ListItem>
         </ContentUl>
       </nav>
