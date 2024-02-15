@@ -1,5 +1,4 @@
-import React from "react";
-import ReactDOM from "react-dom/client";
+import { createRoot } from "react-dom";
 import { ToastContainer } from "react-toastify";
 import { ThemeProvider } from "styled-components";
 import GlobalStyles from "./styles/global";
@@ -8,16 +7,14 @@ import CartProvider from "./context/cart";
 import { AuthRoutes } from "./routes/auth.routes";
 import { BrowserRouter as Router } from "react-router-dom";
 
-ReactDOM.createRoot(document.getElementById("root")).render(
-  <React.StrictMode>
-    <Router>
-      <ThemeProvider theme={theme}>
-        <CartProvider>
-          <GlobalStyles />
-          <AuthRoutes />
-        </CartProvider>
-      </ThemeProvider>
-    </Router>
+createRoot(document.getElementById("root")).render(
+  <Router>
+    <ThemeProvider theme={theme}>
+      <CartProvider>
+        <GlobalStyles />
+        <AuthRoutes />
+      </CartProvider>
+    </ThemeProvider>
     <ToastContainer
       position="top-right"
       autoClose={5000}
@@ -30,6 +27,5 @@ ReactDOM.createRoot(document.getElementById("root")).render(
       pauseOnHover
       theme="light"
     />
-    <ToastContainer />
-  </React.StrictMode>
+  </Router>
 );
