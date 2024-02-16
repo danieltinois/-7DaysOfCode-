@@ -20,7 +20,7 @@ export default createGlobalStyle`
   a {
     color: ${({ theme }) => theme.COLORS.TEXT_BLACK};
     text-decoration: none;
-    
+
   }
 
 

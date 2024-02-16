@@ -3,7 +3,6 @@ import styled from "styled-components";
 export const Container = styled.div`
   button {
     cursor: pointer;
-    font-family: "Lato", sans-serif;
   }
 
   table {
@@ -16,6 +15,7 @@ export const Container = styled.div`
         th {
           text-align: left;
           padding-bottom: 10px;
+          padding: 0px 5px;
           text-transform: uppercase;
           color: #666;
         }
@@ -30,7 +30,7 @@ export const Container = styled.div`
         }
 
         td {
-          padding: 30px 0;
+          padding: 30px 0px;
         }
       }
     }
@@ -42,7 +42,7 @@ export const Container = styled.div`
 
     img {
       border-radius: 6px;
-      width: 200px;
+      width: 150px;
     }
 
     .info {

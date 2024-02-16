@@ -35,6 +35,10 @@ export function TableProducts({ onUpdateTotal }) {
     );
   }
 
+  function precoToal(product, index) {
+    return product.preco * quantities[index];
+  }
+
   return (
     <Container>
       <table>
@@ -82,7 +86,7 @@ export function TableProducts({ onUpdateTotal }) {
                     </button>
                   </div>
                 </td>
-                <td>R$ {product.preco * quantities[index]}</td>
+                <td>R$ {precoToal(product, index).toFixed(2)}</td>
                 <td>
                   <button
                     className="remove"

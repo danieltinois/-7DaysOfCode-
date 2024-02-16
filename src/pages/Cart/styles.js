@@ -7,12 +7,14 @@ export const Container = styled.div`
   display: flex;
   justify-content: center;
 
+
   > main {
+
     background: #fff;
     padding: 0 30px 30px;
-    min-width: 70%;
+    width: 90%;
 
-    margin-bottom: 100px;
+    margin-bottom: 360px;
 
     .content {
       display: flex;
@@ -34,12 +36,37 @@ export const Container = styled.div`
 
 export const TitleCart = styled.div`
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
 
   margin-top: 10px;
-  padding: 50px 0;
+  padding: 50px 0px;
 
   font-size: 30px;
   font-weight: 900;
+
+  > button {
+    display: flex;
+    align-items: center;
+
+    font-size: 20px;
+    font-weight: 900;
+
+    background: transparent;
+    border: none;
+
+    margin-right: 115px;
+
+    cursor: pointer;
+
+    opacity: 50%;
+
+    > svg {
+      margin-right: 5px;
+    }
+
+    &:hover {
+      opacity: 100%;
+    }
+  }
 `;

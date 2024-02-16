@@ -7,6 +7,8 @@ import CartProvider from "./context/cart";
 import { AuthRoutes } from "./routes/auth.routes";
 import { BrowserRouter as Router } from "react-router-dom";
 
+import "bootstrap/dist/css/bootstrap.min.css";
+
 createRoot(document.getElementById("root")).render(
   <Router>
     <ThemeProvider theme={theme}>

@@ -1,5 +1,3 @@
-import { useNavigate } from "react-router";
-
 import { Container, ContentUl, ListItem } from "./styles";
 
 import logo from "../../assets/svg/logo.svg";
