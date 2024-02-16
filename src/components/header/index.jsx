@@ -1,15 +1,26 @@
-import { Container, ContentUl, ListItem } from "./styles";
+import { useContext, useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+import { CartContext } from "../../context/cart";
+
+import { Container, ContentUl, ListItem, CartItemCount } from "./styles";
 
 import logo from "../../assets/svg/logo.svg";
-import { Link } from "react-router-dom";
 
 export function Header() {
+  const { productsCart } = useContext(CartContext);
+  const [itemCount, setItemCount] = useState(0);
+
   function handleSrollToOffers(e) {
     e.preventDefault();
 
     const offersSection = document.getElementById("offers");
     offersSection.scrollIntoView({ behavior: "smooth" });
   }
+
+  useEffect(() => {
+    // Atualizar o número de itens quando os itens do carrinho mudarem
+    setItemCount(productsCart.length);
+  }, [productsCart]);
 
   return (
     <Container>
@@ -34,7 +45,10 @@ export function Header() {
             <a href="/">Vídeos</a>
           </ListItem>
           <ListItem>
-            <Link to="/cart">Meu carrinho</Link>
+            <Link to="/cart">
+              Meu carrinho
+              {itemCount > 0 && <CartItemCount>{itemCount}</CartItemCount>}
+            </Link>
           </ListItem>
         </ContentUl>
       </nav>

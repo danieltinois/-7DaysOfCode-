@@ -18,7 +18,11 @@ export const Container = styled.div`
 
 export const ContentUl = styled.ul`
   display: flex;
+  align-items: center;
   list-style: none;
+
+  position: relative;
+  top: 16px;
 `;
 
 export const ListItem = styled.li`
@@ -39,4 +43,21 @@ export const ListItem = styled.li`
       opacity: 50%;
     }
   }
+`;
+
+export const CartItemCount = styled.span`
+  position: relative;
+
+  top: -10px;
+  left: 3px;
+
+  padding: 0.5px 4px;
+
+  border-radius: 100%;
+
+  font-size: 11px;
+
+  color: white;
+
+  background-color: red;
 `;

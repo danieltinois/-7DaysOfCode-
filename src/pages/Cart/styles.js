@@ -7,12 +7,10 @@ export const Container = styled.div`
   display: flex;
   justify-content: center;
 
-
   > main {
-
     background: #fff;
     padding: 0 30px 30px;
-    width: 90%;
+    width: 60%;
 
     margin-bottom: 360px;
 

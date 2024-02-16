@@ -48,18 +48,6 @@ export function Offers() {
     productImg6,
   ];
 
-  const notifySuccess = () =>
-    toast.success("Produto adicionado no carrinho com sucesso!", {
-      position: "top-right",
-      autoClose: 5000,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
-      theme: "light",
-    });
-
   function handleMouseEnter(index) {
     setIsHovered((prevState) => {
       const newState = [...prevState];
@@ -97,7 +85,6 @@ export function Offers() {
     const updatedProducts = [...products];
     updatedProducts[index] = updatedProduct;
     setProducts(updatedProducts);
-    notifySuccess();
   }
 
   function handleCheckboxChange(event) {
