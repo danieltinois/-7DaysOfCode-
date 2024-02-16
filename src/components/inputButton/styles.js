@@ -58,7 +58,7 @@ export const Button = styled.button`
 
   cursor: pointer;
 
-  transition: all ease-in-out 0.5s;
+  transition: all ease-in-out 0.4s;
 
   &:hover {
     border: 1px solid ${({ theme }) => theme.COLORS.YELLOW};

@@ -4,8 +4,6 @@ import { useState, useEffect, useContext } from "react";
 
 import { CartContext } from "../../context/cart";
 
-import { toast } from "react-toastify";
-
 import {
   Card,
   CardContent,

@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Button, Container } from "./styles";
 
 import { toast } from "react-toastify";
+
 import "react-toastify/dist/ReactToastify.css";
 
 import emailjs from "@emailjs/browser";
