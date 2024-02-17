@@ -51,11 +51,12 @@ export const CartItemCount = styled.span`
   top: -10px;
   left: 3px;
 
-  padding: 0.5px 4px;
+  padding: 1px 5.5px;
 
   border-radius: 100%;
 
-  font-size: 11px;
+  font-size: 15px;
+  font-weight: 900;
 
   color: white;
 
