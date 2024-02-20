@@ -45,20 +45,18 @@ export const ListItem = styled.li`
   }
 `;
 
-export const CartItemCount = styled.span`
-  position: relative;
-
-  top: -10px;
-  left: 3px;
-
-  padding: 1px 5.5px;
-
-  border-radius: 100%;
-
-  font-size: 15px;
-  font-weight: 900;
-
-  color: white;
-
+export const CartItemCount = styled.div`
+  content: "";
   background-color: red;
+  font-size: 13px;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 1.1em;
+  min-width: 1.5em;
+  position: absolute;
+  top: -8px;
+  right: -12px;
+  border-radius: 50%;
 `;
